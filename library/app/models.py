@@ -86,8 +86,8 @@ class Book(models.Model):
     ]
     SHELF_CHOICES = [
         (f"Shelf {letter}-{num}", f"Shelf {letter}-{num}")
-        for letter in ['A', 'B', 'C', 'D']
-        for num in range(1, 6)
+        for letter in ['A', 'B', 'C', 'D', 'E', 'F']
+        for num in range(0, 10)
     ]
     REMARKS_CHOICES = [
         ('Needs Binding', 'Needs Binding'),
