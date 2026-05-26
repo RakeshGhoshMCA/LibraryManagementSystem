@@ -1,0 +1,144 @@
+/* Base Footer Styling */
+.footer {
+    background: #0f172a;
+    color: white;
+    padding: 60px 40px 30px 40px;
+    font-size: 0.95rem; /* Marginally scaled down base font */
+}
+
+/* 4 Columns for Monitors & Large Desktops */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 35px;
+    height: 35px;
+}
+
+.footer-logo h2 {
+    font-size: 1.4rem;
+}
+
+.footer-section p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+    font-weight: 600;
+    position: relative;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: #3b82f6; /* Modern blue hover effect matching your theme */
+}
+
+/* Changed to row layout so social networks sit next to each other */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; 
+    margin-top: 15px;
+    gap: 12px;
+}
+
+.social-links a {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.social-links a:hover {
+    background: #2563eb;
+    color: white;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 40px 0 20px 0;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Laptops / Small Monitors (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .footer {
+        padding: 50px 30px 25px 30px;
+    }
+    .footer-container {
+        gap: 30px; /* Closes gaps slightly */
+    }
+}
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Smooth transition into a balanced 2x2 Grid instead of a 1-column collapse */
+    .footer-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 35px;
+    }
+}
+
+/* Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .footer {
+        padding: 40px 20px 20px 20px;
+        text-align: left;
+    }
+    
+    /* Safely collapses into 1 clean column on tiny screens */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 12px;
+    }
+    
+    hr {
+        margin: 25px 0 15px 0;
+    }
+}

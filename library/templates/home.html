@@ -1,8 +1,10 @@
-<!-- home.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block others %}
+{% load static %}
 
-{{data}}
 
-{% endblock %}
+{% block Body %}
+    {% include "banner.html" %}
+    {% include "book_card.html" %}
+
+{% endblock Body %}
