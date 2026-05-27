@@ -1,0 +1,56 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: sans-serif;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:#1e293b;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+}
+
+.logo-section img{
+    width:40px;
+}
+
+.search-box form{
+    display:flex;
+}
+
+.search-box input{
+    width:300px;
+    padding:10px;
+    border:none;
+}
+
+.search-box button{
+    padding:10px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+}
+
+.signup{
+    background:blue;
+    padding:10px;
+    border-radius:5px;
+}

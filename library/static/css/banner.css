@@ -1,0 +1,132 @@
+.hero-banner {
+    /* Adjusted height: 50vh to 60vh is the sweet spot for a smaller, punchy banner */
+    height: 55vh; 
+    min-height: 400px; /* Prevents the banner from getting too squished on short screens */
+
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.65)
+    ),
+    url("../images/library-banner.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem; /* Switched to rem for better responsive scaling */
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Combined Button Base Styles */
+.btn,
+.btn-outline {
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.btn {
+    background: #2563eb;
+    color: white;
+    border: 2px solid #2563eb; /* Kept border size same as outline for alignment */
+}
+
+.btn:hover {
+    transform: scale(1.03);
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: #111827;
+    transform: scale(1.03);
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablets (max-width: 992px) */
+@media (max-width: 992px) {
+    .hero-banner {
+        height: 50vh; /* Marginally shorter on tablets */
+    }
+    .hero-content h1 {
+        font-size: 2.3rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobiles (max-width: 576px) */
+@media (max-width: 576px) {
+    .hero-banner {
+        height: auto;
+        padding: 60px 20px; /* Uses padding instead of fixed height so content never overflows */
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 280px; /* Keeps stacked vertical buttons from stretching too wide */
+        margin: 0 auto;
+    }
+    
+    .btn, .btn-outline {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 10px 20px;
+    }
+}
