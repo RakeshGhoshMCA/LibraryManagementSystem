@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Book
 
@@ -63,4 +63,21 @@ def home(request):
         "skills": ["Python","Django","React"]
     }
 
-    return render(request,'home.html',context = { "data" : data, "page" : page})
+    return render(request,'home.html',context = { "data" : data, "page" : page, "rng" : range(8)})
+
+def books(request):
+    data = {
+        "name": "Snehasish",
+        "course": "MCA",
+        "skills": ["Python","Django","React"]
+    }
+    return render(request, 'books.html', {"data" : data})
+
+def book_details(request,id):
+    return render(request, 'book_details.html', {})
+
+def issue_book(request,id):
+    return render(request, 'issue_book.html', {'id' : id})
+
+def sign(request):
+    return render(request, 'sign.html', {})

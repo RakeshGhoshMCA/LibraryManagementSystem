@@ -1,0 +1,36 @@
+{% load static %}
+
+<section class="book-section">
+    <h2>Trending Now</h2>
+    <div class="book-container">
+        {% for i in rng %}
+
+            <div class="book-card" data-id="{{i}}">
+            
+                <img src="{% static 'images/1984.jpeg' %}" alt="Book">
+                <button class="issue-btn" data-id="{{i}}">Issue</button>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <h2>Literature</h2>
+    <div class="book-container">
+        {% for i in rng %}
+
+            <div class="book-card" data-id="{{i}}">
+            
+                <img src="{% static 'images/1984.jpeg' %}" alt="Book">
+                <button class="issue-btn" data-id="{{i}}">Issue</button>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<script src="{% static 'js/book_card.js' %}"></script>
