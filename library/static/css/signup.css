@@ -1,0 +1,36 @@
+.signup-container{
+    width:400px;
+    margin:70px auto;
+    padding:30px;
+    border-radius:10px;
+    background:#ffffff;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+    text-align:center;
+}
+
+.signup-container h2{
+    margin-bottom:20px;
+}
+
+.signup-container input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.signup-container button{
+    width:100%;
+    padding:12px;
+    background:#16a34a;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.signup-container p{
+    margin-top:20px;
+}
+

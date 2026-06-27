@@ -81,3 +81,58 @@ def issue_book(request,id):
 
 def sign(request):
     return render(request, 'sign.html', {})
+
+
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+
+def signin(request):
+
+    if request.method == "POST":
+
+        email = request.POST["email"]
+        password = request.POST["password"]
+
+        try:
+            user = User.objects.get(email=email)
+            username = user.username
+
+            user = authenticate(request,
+                                username=username,
+                                password=password)
+
+            if user:
+                login(request,user)
+                return redirect('/')
+
+        except:
+            pass
+
+    return render(request,'sign_in.html')
+
+
+def signup(request):
+
+    if request.method == "POST":
+
+        email = request.POST["email"]
+        password1 = request.POST["password1"]
+        password2 = request.POST["password2"]
+
+        if password1 == password2:
+
+            username = email.split("@")[0]
+
+            User.objects.create_user(
+                username=username,
+                email=email,
+                password=password1
+            )
+
+            return redirect('signin')
+
+    return render(request,'sign_up.html')
