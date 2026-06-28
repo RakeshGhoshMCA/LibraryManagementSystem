@@ -1,40 +1,81 @@
 {% load static %}
-<header class="header">
 
-    <!-- Logo -->
-    <div class="logo-section">
-        <img src="{% static 'images/logo.png' %}" alt="">
-        <h2>BookHub</h2>
-    </div>
+<header>
 
-    <!-- Search -->
-    <div class="search-box">
-        <form>
-            <input type="text" placeholder="Search books">
-            <button>Search</button>
-        </form>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+        <div class="container">
 
-    <!-- Navigation -->
-    <nav>
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/books/">Books</a></li>
-            <li><a href="/resources/">Resources</a></li>
-            <!-- <li><a href="/sign/">Sign In</a></li> -->
-            <!-- <li>
-                <a class="signup" href="/sign/">
-                    Sign Up
-                </a>
-            </li> -->
-             <li><a href="/">Home</a></li>
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{% static 'images/logo.png' %}"
+                     alt="Logo"
+                     width="45"
+                     height="45"
+                     class="me-2">
 
-            <li>
-                <a href="{% url 'signin' %}">
-                    Sign In
-                </a>
-            </li>
-        </ul>
+                <span class="fw-bold fs-4">BookHub</span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarMenu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- Navbar -->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+
+                <!-- Search -->
+                <form class="d-flex mx-lg-auto my-3 my-lg-0 w-100" style="max-width:450px;">
+                    <input class="form-control me-2"
+                           type="search"
+                           placeholder="Search books...">
+
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+
+                <!-- Menu -->
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/books/">
+                            Books
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/resources/">
+                            Resources
+                        </a>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="{% url 'signin' %}" class="btn btn-primary px-4">
+                            Sign In
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
     </nav>
 
 </header>
+
+
+
+

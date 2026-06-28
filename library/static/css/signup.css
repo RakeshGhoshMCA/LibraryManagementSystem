@@ -1,4 +1,4 @@
-.signup-container{
+/* .signup-container{
     width:400px;
     margin:70px auto;
     padding:30px;
@@ -33,4 +33,147 @@
 .signup-container p{
     margin-top:20px;
 }
+ */
 
+
+ /* ===========================
+        Signup Page
+=========================== */
+
+.signup-section{
+
+    min-height:100vh;
+    background:linear-gradient(135deg,#2563eb,#1e3a8a);
+    display:flex;
+    align-items:center;
+    padding:60px 0;
+
+}
+
+/* Card */
+
+.signup-card{
+
+    border-radius:25px;
+    overflow:hidden;
+
+}
+
+/* Left Side */
+
+.signup-left{
+
+    background:linear-gradient(rgba(37,99,235,.9),rgba(30,58,138,.9)),
+               url("../images/library.jpg");
+
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+    min-height:700px;
+
+}
+
+.signup-logo{
+
+    width:90px;
+
+}
+
+.signup-left h2{
+
+    font-size:2.2rem;
+
+}
+
+.signup-left p{
+
+    font-size:1.05rem;
+    line-height:1.8;
+
+}
+
+/* Inputs */
+
+.signup-card .form-control{
+
+    border-radius:12px;
+    padding:14px;
+    transition:.3s;
+
+}
+
+.signup-card .form-control:focus{
+
+    border-color:#2563eb;
+    box-shadow:0 0 10px rgba(37,99,235,.2);
+
+}
+
+/* Button */
+
+.signup-card .btn{
+
+    border-radius:12px;
+    padding:13px;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.signup-card .btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Links */
+
+.signup-card a{
+
+    transition:.3s;
+
+}
+
+.signup-card a:hover{
+
+    color:#2563eb !important;
+
+}
+
+/* Mobile */
+
+@media(max-width:991px){
+
+    .signup-section{
+
+        padding:40px 15px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .signup-card{
+
+        border-radius:15px;
+
+    }
+
+    .signup-card .p-5{
+
+        padding:2rem !important;
+
+    }
+
+    .signup-card h2{
+
+        font-size:1.8rem;
+
+    }
+
+}

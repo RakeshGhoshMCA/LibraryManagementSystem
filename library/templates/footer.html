@@ -1,56 +1,116 @@
 {% load static %}
 
-<footer class="footer">
-    <div class="footer-container">
+<footer class="footer bg-dark text-light pt-5">
 
-        <div class="footer-section">
-            <div class="footer-logo">
-                <img src="{% static 'images/logo.png' %}" alt="BookHub Logo">
-                <h2>BookHub</h2>
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <!-- Logo -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="d-flex align-items-center mb-3">
+
+                    <img src="{% static 'images/logo.png' %}"
+                         alt="BookHub Logo"
+                         width="55"
+                         class="me-3">
+
+                    <h3 class="mb-0 fw-bold">BookHub</h3>
+
+                </div>
+
+                <p class="text-light-emphasis">
+                    Discover books, resources, study materials, and knowledge for every learner.
+                </p>
+
             </div>
-            <p class="footer-about-text">
-                Discover books, resources, study materials, and knowledge for every learner.
-            </p>
-        </div>
 
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/books/">Books</a></li>
-                <li><a href="/resources/">Resources</a></li>
-                <li><a href="/about/">About Us</a></li>
-                <li><a href="/contact/">Contact</a></li>
-            </ul>
-        </div>
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
 
-        <div class="footer-section">
-            <h3>Library Services</h3>
-            <ul>
-                <li><a href="/membership/">Membership</a></li>
-                <li><a href="/ebooks/">E-Books</a></li>
-                <li><a href="/borrow/">Borrow Books</a></li>
-                <li><a href="/study-material/">Study Materials</a></li>
-            </ul>
-        </div>
+                <h5 class="footer-title">Quick Links</h5>
 
-        <div class="footer-section">
-            <h3>Contact</h3>
-            <p>Email: library@example.com</p>
-            <p>Phone: +91 XXXXX XXXXX</p>
-            <p>Kolkata, India</p>
+                <ul class="list-unstyled">
 
-            <div class="social-links">
-                <a href="https://www.facebook.com/">Facebook</a>
-                <a href="https://www.instagram.com/">Instagram</a>
-                <a href="https://in.linkedin.com/in/snehasish-sarkar-profile">LinkedIn</a>
-                <a href="https://youtube.com/@8dpunjabi128">YouTube</a>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/books/">Books</a></li>
+                    <li><a href="/resources/">Resources</a></li>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+
+                </ul>
+
             </div>
+
+            <!-- Services -->
+            <div class="col-lg-3 col-md-6">
+
+                <h5 class="footer-title">Library Services</h5>
+
+                <ul class="list-unstyled">
+
+                    <li><a href="/membership/">Membership</a></li>
+                    <li><a href="/ebooks/">E-Books</a></li>
+                    <li><a href="/borrow/">Borrow Books</a></li>
+                    <li><a href="/study-material/">Study Materials</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="col-lg-3 col-md-6">
+
+                <h5 class="footer-title">Contact</h5>
+
+                <p class="mb-2">
+                    <i class="bi bi-envelope-fill me-2"></i>
+                    library@example.com
+                </p>
+
+                <p class="mb-2">
+                    <i class="bi bi-telephone-fill me-2"></i>
+                    +91 XXXXX XXXXX
+                </p>
+
+                <p>
+                    <i class="bi bi-geo-alt-fill me-2"></i>
+                    Kolkata, India
+                </p>
+
+                <div class="social-links mt-3">
+
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/" target="_blank">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+
+                    <a href="https://www.youtube.com/" target="_blank">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="border-secondary my-4">
+
+        <div class="text-center pb-3">
+
+            © 2026 <strong>BookHub</strong>. All Rights Reserved.
+
         </div>
 
     </div>
-    <hr>
-    <div class="copyright">
-        &copy; 2026 BookHub. All rights reserved.
-    </div>
+
 </footer>
