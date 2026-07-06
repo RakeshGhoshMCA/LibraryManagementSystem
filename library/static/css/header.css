@@ -1,59 +1,3 @@
-/* *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: sans-serif;
-}
-
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 50px;
-    background:#1e293b;
-}
-
-.logo-section{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:white;
-}
-
-.logo-section img{
-    width:40px;
-}
-
-.search-box form{
-    display:flex;
-}
-
-.search-box input{
-    width:300px;
-    padding:10px;
-    border:none;
-}
-
-.search-box button{
-    padding:10px;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:white;
-}  */
-
-
-
-/* ==========================
-   Header
-========================== */
 
 body{
     font-family: 'Poppins', sans-serif;
@@ -160,4 +104,30 @@ body{
 
 }
 
+/* Disable all nav-link hover effects for profile only */
 
+#profileDropdown,
+#profileDropdown:hover,
+#profileDropdown:focus{
+    color: inherit !important;
+    transition: none !important;
+    text-decoration: none !important;
+}
+
+#profileDropdown::after{
+    display: none !important;
+    content: none !important;
+}
+
+#profileDropdown:hover::after{
+    width: 0 !important;
+}
+
+#profileDropdown .rounded-circle{
+    transition: none !important;
+    transform: none !important;
+}
+
+#profileDropdown:hover .rounded-circle{
+    transform: none !important;
+}

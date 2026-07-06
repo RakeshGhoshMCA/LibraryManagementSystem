@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="card shadow p-4 border-warning">
+                <div class="card-body">
+                    <h2 class="text-warning mb-3">Registration Successful!</h2>
+                    <p class="lead">Thank you for registering as an Employee.</p>
+                    <p>Your account is currently <strong>pending approval</strong> from an administrator or senior staff member.</p>
+                    <div class="alert alert-info mt-3" role="alert">
+                        You will receive access once an authorized user activates your account.
+                    </div>
+                    <hr>
+                    <a href="{% url 'login' %}" class="btn btn-primary mt-2">Return to Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

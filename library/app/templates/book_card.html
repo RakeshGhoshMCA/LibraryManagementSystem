@@ -1,0 +1,21 @@
+{% load static %}
+<div class="card h-100 shadow-sm border-0 book-card">
+    
+    <img src="{% if book.image %}{{ book.image.url }}{% else %}{% static 'images/1984.jpeg' %}{% endif %}"
+         class="card-img-top"
+         alt="{{ book.title }}">
+
+    <div class="card-body text-center">
+        <h6 class="fw-bold">{{ book.title }}</h6>
+
+        <p class="text-muted small mb-3">
+            {{ book.authors }}
+        </p>
+
+        <button class="btn {% if is_classic %}btn-warning text-white{% elif is_literature %}btn-success{% else %}btn-primary{% endif %} w-100 issue-btn"
+                data-id="{{ book.id }}">
+            <i class="bi {% if is_classic %}bi-bookmark-star{% elif is_literature %}bi-journal-check{% else %}bi-book{% endif %} me-1"></i>
+            Issue Book
+        </button>
+    </div>
+</div>
