@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block Body %}
+<section class="py-5 bg-light">
+    <div class="container bg-white rounded shadow-sm p-4 p-md-5">
+        <div class="row g-5">
+            
+            <div class="col-12 col-md-4 col-lg-3 text-center border-end-md">
+                <div class="position-relative d-inline-block shadow mb-4 rounded overflow-hidden" style="max-width: 240px;">
+                    <img src="{% if book.image %}{{ book.image.url }}{% else %}{% static 'images/1984.jpeg' %}{% endif %}" 
+                         class="img-fluid w-100" 
+                         style="height: 340px; object-fit: cover;" 
+                         alt="{{ book.title }}">
+                </div>
+                
+                {% if book.available_copies > 0 %}
+                    <button class="btn btn-primary btn-lg w-100 mb-2 issue-btn" data-id="{{ book.id }}">
+                        <i class="bi bi-book me-2"></i>Issue Book
+                    </button>
+                    <p class="text-success small"><i class="bi bi-check-circle-fill me-1"></i> {{ book.available_copies }} of {{ book.total_copies }} copies available</p>
+                {% else %}
+                    <button class="btn btn-warning text-white btn-lg w-100 mb-2">
+                        <i class="bi bi-clock-history me-2"></i>Join Waitlist
+                    </button>
+                    <p class="text-muted small">You'll be next in line.</p>
+                {% endif %}
+
+                <div class="d-flex justify-content-around mt-4 pt-3 border-top text-muted small">
+                    <div class="text-center cursor-pointer"><i class="bi bi-chat-square-text d-block fs-5 mb-1"></i> Review</div>
+                    <div class="text-center cursor-pointer"><i class="bi bi-pencil-square d-block fs-5 mb-1"></i> Notes</div>
+                    <div class="text-center cursor-pointer"><i class="bi bi-share d-block fs-5 mb-1"></i> Share</div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-9">
+                
+                <div class="mb-4">
+                    <span class="badge bg-secondary mb-2 px-2 py-1 fs-7 rounded-pill">{{ book.genre }}</span>
+                    {% if book.subject %}
+                        <span class="badge bg-info mb-2 px-2 py-1 fs-7 rounded-pill text-dark">{{ book.subject }}</span>
+                    {% endif %}
+                    <h1 class="fw-bold text-dark display-6 mb-1">{{ book.title }}</h1>
+                    <p class="fs-5 text-muted mb-2">by <span class="text-primary fw-semibold">{{ book.authors }}</span></p>
+                    
+                    <div class="d-flex align-items-center mb-3 text-warning">
+                        <i class="bi bi-star-fill me-1"></i>
+                        <i class="bi bi-star-fill me-1"></i>
+                        <i class="bi bi-star-fill me-1"></i>
+                        <i class="bi bi-star-fill me-1"></i>
+                        <i class="bi bi-star me-2"></i>
+                        <span class="text-muted small fw-normal">(4.0 rating fallback)</span>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs mb-4" id="bookInfoTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active fw-bold" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Overview</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-bold" id="technical-tab" data-bs-toggle="tab" data-bs-target="#technical" type="button" role="tab">Specifications</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="bookInfoTabsContent">
+                    
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="row g-3">
+                            <div class="col-6 col-sm-3">
+                                <div class="bg-light p-3 rounded text-center h-100">
+                                    <span class="text-muted d-block small mb-1">Publish Date</span>
+                                    <strong class="text-dark">{{ book.publication_year }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <div class="bg-light p-3 rounded text-center h-100">
+                                    <span class="text-muted d-block small mb-1">Publisher</span>
+                                    <strong class="text-dark text-truncate d-block" title="{{ book.publisher }}">{{ book.publisher }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <div class="bg-light p-3 rounded text-center h-100">
+                                    <span class="text-muted d-block small mb-1">Language</span>
+                                    <strong class="text-dark">{{ book.language }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <div class="bg-light p-3 rounded text-center h-100">
+                                    <span class="text-muted d-block small mb-1">Price</span>
+                                    <strong class="text-primary">${{ book.price }}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if book.remarks %}
+                        <div class="mt-4 p-3 bg-warning bg-opacity-10 border border-warning rounded">
+                            <h6 class="fw-bold text-warning-emphasis mb-1"><i class="bi bi-exclamation-triangle-fill me-2"></i>Library Remarks</h6>
+                            <p class="mb-0 text-muted small">Condition: <strong>{{ book.remarks }}</strong></p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="tab-pane fade" id="technical" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-striped align-middle rounded border overflow-hidden">
+                                <tbody>
+                                    <tr>
+                                        <th class="w-25 text-muted fw-semibold ps-3">ISBN-13</th>
+                                        <td class="font-monospace text-dark">{{ book.isbn }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted fw-semibold ps-3">Accession Number</th>
+                                        <td class="font-monospace text-dark">{{ book.accession_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted fw-semibold ps-3">Location/Shelf No.</th>
+                                        <td><span class="badge bg-dark text-white font-monospace px-2 py-1">{{ book.location_shelf }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted fw-semibold ps-3">Edition</th>
+                                        <td>{{ book.edition|default:"1st Edition" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted fw-semibold ps-3">Target Audience</th>
+                                        <td>{{ book.audience }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted fw-semibold ps-3">Database Record Status</th>
+                                        <td>
+                                            <span class="badge {% if book.status == 'Available' %}bg-success{% else %}bg-danger{% endif %}">
+                                                {{ book.status }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'js/book_card.js' %}"></script>
+
+<style>
+    .cursor-pointer { cursor: pointer; }
+    .cursor-pointer:hover { color: var(--bs-primary) !important; }
+    @media (min-width: 768px) {
+        .border-end-md { border-end: 1px solid #dee2e6 !important; border-right: 1px solid #dee2e6 !important; }
+    }
+</style>
+{% endblock %}

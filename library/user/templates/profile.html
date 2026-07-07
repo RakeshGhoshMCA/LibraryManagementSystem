@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block Body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">Profile Details</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-muted border-bottom pb-2">Account Overview</h5>
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-secondary">Username:</div>
+                        <div class="col-sm-8 font-weight-bold"><strong>{{ user.username }}</strong></div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-secondary">Email Address:</div>
+                        <div class="col-sm-8">{{ user.email }}</div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-sm-4 text-secondary">Account Role:</div>
+                        <div class="col-sm-8"><span class="badge bg-info text-dark">{{ user.role }}</span></div>
+                    </div>
+
+                    {% if user.role == "READER" and user.reader %}
+                        <h5 class="card-title text-muted border-bottom pb-2">Reader Profile Details</h5>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 text-secondary">Roll Number:</div>
+                            <div class="col-sm-8">{{ user.reader.roll_number }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 text-secondary">Department:</div>
+                            <div class="col-sm-8">{{ user.reader.department }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 text-secondary">Phone Number:</div>
+                            <div class="col-sm-8">{{ user.reader.phone|default:"Not Provided" }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 text-secondary">Address:</div>
+                            <div class="col-sm-8">{{ user.reader.address|default:"Not Provided" }}</div>
+                        </div>
+
+                    {% elif user.role == "EMPLOYEE" and user.employee %}
+                        <h5 class="card-title text-muted border-bottom pb-2">Employee Profile Details</h5>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 text-secondary">Employee ID:</div>
+                            <div class="col-sm-8">{{ user.employee.employee_id }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 text-secondary">Designation:</div>
+                            <div class="col-sm-8">{{ user.employee.designation }}</div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer bg-light d-flex justify-content-between">
+                    <a href="javascript:history.back()" class="btn btn-secondary btn-sm">Go Back</a>
+                    {% if user.role == "READER" %}
+                        <a href="{% url 'reader_dashboard' %}" class="btn btn-primary btn-sm">Dashboard</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block Body %}
+<section class="py-5 bg-light">
+    <div class="container">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold mb-1">Welcome Back, {{ request.user.username }}!</h2>
+                <p class="text-muted mb-0">Manage your borrowed volumes, deadlines, and balances.</p>
+            </div>
+            <a href="/books/" class="btn btn-primary">
+                <i class="bi bi-search me-2"></i>Browse Catalog
+            </a>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100 bg-white">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="p-3 bg-primary-subtle rounded text-primary me-3">
+                            <i class="bi bi-book display-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-0">{{ active_count }}</h3>
+                            <p class="text-muted mb-0">Active Borrowed Books</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100 bg-white">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="p-3 bg-danger-subtle rounded text-danger me-3">
+                            <i class="bi bi-cash-coin display-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-0">${{ total_fines|stringformat:".2f" }}</h3>
+                            <p class="text-muted mb-0">Outstanding Fine Balance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded overflow-hidden bg-white">
+            <div class="card-header bg-dark text-white py-3">
+                <h5 class="mb-0 fw-bold"><i class="bi bi-clock-history me-2"></i>Personal Borrowing Records Ledger</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 text-center">
+                        <thead class="table-light text-secondary small text-uppercase">
+                            <tr>
+                                <th class="py-3 text-start ps-4">Book Title</th>
+                                <th class="py-3">Issue Date</th>
+                                <th class="py-3">Due Date</th>
+                                <th class="py-3">Return Date</th>
+                                <th class="py-3">Status</th>
+                                <th class="py-3 pe-4">Accrued Fine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in records %}
+                            <tr>
+                                <td class="text-start ps-4 py-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-journal-text text-secondary fs-4 me-3"></i>
+                                        <div>
+                                            <span class="fw-bold text-dark d-block mb-0">{{ record.book.title }}</span>
+                                            <small class="text-muted">by {{ record.book.authors }}</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-muted fw-semibold">{{ record.issue_date|date:"M d, Y" }}</td>
+                                <td class="text-dark fw-semibold">{{ record.due_date|date:"M d, Y" }}</td>
+                                <td>
+                                    {% if record.return_date %}
+                                        <span class="text-success fw-semibold">{{ record.return_date|date:"M d, Y" }}</span>
+                                    {% else %}
+                                        <span class="text-muted italic small">—</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if record.status == "Returned" %}
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3">Returned</span>
+                                    {% elif record.status == "Overdue" or record.current_fine > 0 %}
+                                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3">Overdue</span>
+                                    {% else %}
+                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3">Active</span>
+                                    {% endif %}
+                                </td>
+                                <td class="pe-4">
+                                    {% if record.current_fine > 0 %}
+                                        <span class="text-danger fw-bold">${{ record.current_fine|stringformat:".2f" }}</span>
+                                    {% else %}
+                                        <span class="text-success fw-semibold">$0.00</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-5">
+                                    <i class="bi bi-folder-x display-4 text-muted d-block mb-3"></i>
+                                    You have not checked out any library resource items yet.
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock Body %}
