@@ -46,7 +46,13 @@ def upload_book_api(request):
             image=image,
             remarks=request.POST.get("remarks"),
         )
-        return JsonResponse({"status": "success", "book_id": book.id})
+        return JsonResponse({
+                "status": "success",
+                "message": "Book uploaded successfully.",
+                "book_id": book.id
+            },
+            status=201
+        )
 
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)}, status=400)
